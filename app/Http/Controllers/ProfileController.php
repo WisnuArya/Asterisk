@@ -24,7 +24,7 @@ class ProfileController extends Controller
             $user->avatar = $filename;
             $user->save();
         }
-        
+        notify()->success('Successfully Update Avatar');
         return view('profile.edit', array('user' => Auth::user()) );
         }
     
@@ -74,6 +74,7 @@ public function update(UpdateProfileRequest $request)
     $request->user()->update(
         $request->all()
 );
+notify()->success('Succcessfully Update Profile');
 return view('profile.edit', array('user' => Auth::user()) );
 }
 }
