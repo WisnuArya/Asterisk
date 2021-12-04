@@ -55,17 +55,21 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; right:80px; border-radius:50%;">
+                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; right:70px; border-radius:50%;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a href="{{ route('home') }}" class="dropdown-item">
-                                        Home
+                                        Dashboard
                                     </a>
 
                                     <a href="{{ route('profile.edit') }}" class="dropdown-item">
-                                        Edit Profile
+                                        Profile
+                                    </a>
+
+                                    <a href="/chatify" class="dropdown-item">
+                                        Private Chat
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
