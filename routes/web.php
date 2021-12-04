@@ -19,8 +19,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+
+    Route::post('avatar/profile', [App\Http\Controllers\ProfileController::class, 'update_avatar'])
+    ->name('profile.update_avatar');
+
+    Route::get('profile', [App\Http\Controllers\ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::post('profile', [App\Http\Controllers\ProfileController::class, 'update'])
+        ->name('profile.update');
+});
